@@ -6,137 +6,89 @@
 //
 
 import SwiftUI
+
+class HomeViewModel: ObservableObject {
+    @Published var errorMessage: String? = nil
+    
+    init() {
+        
+    }
+}
+
 struct HomeScreen: View {
     
-    @StateObject private var buzzel: SodokuSolver = SodokuSolver(from: SodokuProvider.exampleHard001) ?? SodokuSolver()
+    @StateObject private var viewModel: HomeViewModel = .init()
+    @EnvironmentObject private var dataCenter: DataCenter
     
     var body: some View {
         NavigationView {
             ZStack {
-                content
-                if let error = buzzel.errorMessage {
-                    Text(error)
-                        .font(.system(size: 44, weight: .bold))
-                }
+                buttons
+                errorMessage()
             }
-            .navigationTitle("Sodoku")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                    newBuzzelButton
-                }
-            }
+            .navigationTitle("Sudoku")
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 extension HomeScreen {
-    
-    private var content: some View {
+    private var buttons: some View {
         VStack(spacing: 32) {
-            GridView(buzzel: buzzel)
-                .padding(.top, 32)
+            Button(action: {}, label: {
+                Text("Solve")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .padding(.vertical, 8)
+                    .frame(width: 220)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                    )
+            })
             
-            solveButton()
-            
-            Spacer(minLength: 0)
+            Button(action: {}, label: {
+                Text("Play")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.white)
+                    .padding(.vertical, 8)
+                    .frame(width: 220)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color(.systemGreen))
+                    )
+            })
         }
     }
     
     @ViewBuilder
-    private func solveButton() -> some View {
-        if buzzel.isValid {
-            Button(action: {
-                buzzel.solve()
-            }, label: {
-                Text("Start Solving")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding(.vertical, 8)
-                    .frame(width: 280)
-                    .background(RoundedRectangle(cornerRadius: 12).fill(Color(.systemGreen)))
-                
-            })
-            .disabled(buzzel.isBusy)
-            .opacity(buzzel.isBusy ? 0.6 : 1)
+    private func errorMessage() -> some View {
+        if let error = dataCenter.errorMessage {
+            ErrorView(message: error) {
+                dataCenter.errorMessage = nil
+            }
         }
-    }
-    
-    private var newBuzzelButton: some View {
-        Button(action: {
-            buzzel.newBuzzel()
-        }, label: {
-            Image(systemName: "doc.fill.badge.plus")
-        })
     }
     
 }
 
-struct GridView: View {
-    
-    @ObservedObject var buzzel: SodokuSolver
-    
-    var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                ForEach(0..<9, id:\.self) { row in
-                    HStack(spacing: 0) {
-                        ForEach(0..<9, id:\.self) { col in
-                            ZStack {
-                                Rectangle()
-                                    .fill(Color(.systemBackground))
-                                Rectangle()
-                                    .stroke(Color.pallet.pink.opacity(0.6))
-                                let node = buzzel[row, col]
-                                Text(node.text)
-                                    .font(.subheadline)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(node.color)
-                            }
-                            .frame(width: Global.cellWidth, height: Global.cellWidth)
-                        }
-                    }
-                }
-            }
-            .overlay(
-                HStack {
-                    Spacer()
-                    Rectangle()
-                        .fill(Color.pallet.pink)
-                        .frame(width: 2)
-                    Spacer()
-                    Rectangle()
-                        .fill(Color.pallet.pink)
-                        .frame(width: 2)
-                    Spacer()
-                }
-            )
-            .overlay(
-                VStack {
-                    Spacer()
-                    Rectangle()
-                        .fill(Color.pallet.pink)
-                        .frame(height: 2)
-                    Spacer()
-                    Rectangle()
-                        .fill(Color.pallet.pink)
-                        .frame(height: 2)
-                    Spacer()
-                }
-            )
-            .overlay(
-                Rectangle()
-                    .stroke(Color.pallet.pink, lineWidth: 2)
-            )
-        }
-    }
-}
+
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
             .preferredColorScheme(.dark)
+            .environmentObject(DataCenter())
     }
 }
+
+
+
+
+
+
+
+
+

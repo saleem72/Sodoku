@@ -41,7 +41,7 @@ enum Node: Identifiable {
 
 
 typealias NodeArray = [Node]
-typealias Sodoku = [NodeArray]
+typealias Sudoku = [NodeArray]
 
 extension Array where Element == NodeArray {
     subscript(row: Int, col: Int) -> Node {

@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject private var dataCenter = DataCenter()
+    
     var body: some View {
         HomeScreen()
+            .environmentObject(dataCenter)
     }
 }
 

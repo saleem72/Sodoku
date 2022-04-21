@@ -7,26 +7,29 @@
 
 import Foundation
 
-class SodokuSolver: ObservableObject {
+class SudokuSolver: ObservableObject {
     
-    @Published var initialSodoku: Sodoku = Array(repeating: Array(repeating: Node.empty, count: 9), count: 9)
+    @Published var initialSodoku: Sudoku
     @Published var isValid: Bool = false
     @Published var isBusy: Bool = false
     @Published var errorMessage: String? = nil
     
     init?(from array: [[Int?]]) {
-        guard Self.hasValidDimintion(array: array) else { return nil}
-        prepare(array: array)
+        guard let cells = Self.prepare(array: array) else { return nil}
+        self.initialSodoku = cells
         isValid = isSodokuValid()
     }
     
-    init() {
-        isValid = false
-    } 
+    init(sudoku: Sudoku) {
+        self.initialSodoku = sudoku
+        isValid = isSodokuValid()
+    }
+    
+    
 }
 
 //MARK: - Initializations stuff
-extension SodokuSolver {
+extension SudokuSolver {
     
     func indexIsValid(row: Int, column: Int) -> Bool {
         return row >= 0 && row < 9 && column >= 0 && column < 9
@@ -45,10 +48,10 @@ extension SodokuSolver {
     }
     
     func newBuzzel() {
-        guard Self.hasValidDimintion(array: SodokuProvider.exampleHard001) else {
-            return
-        }
-        prepare(array: SodokuProvider.exampleHard001)
+        
+        guard let cells = Self.prepare(array: SudokuProvider.exampleHard001) else { return }
+        self.initialSodoku = cells
+        
         isValid = isSodokuValid()
     }
     
@@ -76,19 +79,22 @@ extension SodokuSolver {
         return true
     }
     
-    private func prepare(array: [[Int?]]) {
+    static private func prepare(array: [[Int?]]) -> Sudoku? {
+        guard Self.hasValidDimintion(array: array) else { return nil}
+        var result: Sudoku = Array(repeating: Array(repeating: Node.empty, count: 9), count: 9)
         for row in 0..<9 {
             for col in 0..<9 {
                 if let value = array[row][col] {
-                    initialSodoku[row, col] = .starter(value: value)
+                    result[row, col] = .starter(value: value)
                 }
             }
         }
+        return result
     }
 }
 
 //MARK: - Solving Stuff
-extension SodokuSolver {
+extension SudokuSolver {
     /// check if some int value valid to be placed in  cell at row & col of a givin sodoku
     /// - Parameters:
     ///   - value: int value to placed in cell
@@ -96,7 +102,7 @@ extension SodokuSolver {
     ///   - row: row of the cell
     ///   - col: col of cell
     /// - Returns: return true if no match value in the difined row or col or in smaller rectangle
-    @discardableResult private func isValidValueForCell(value: Int, sodoku: Sodoku, row: Int, col: Int) -> Bool {
+    @discardableResult private func isValidValueForCell(value: Int, sodoku: Sudoku, row: Int, col: Int) -> Bool {
         // check row
         guard isValidValueForCellInRow(value: value, sodoku: sodoku, row: row) else { return false}
         // check col
@@ -106,7 +112,7 @@ extension SodokuSolver {
         return isValidValueForCellInInnerRectangle(value: value, sodoku: sodoku, row: row, col: col)
     }
     
-    private func isValidValueForCellInRow(value: Int, sodoku: Sodoku, row: Int) -> Bool {
+    private func isValidValueForCellInRow(value: Int, sodoku: Sudoku, row: Int) -> Bool {
         for col in 0..<9 {
             if sodoku[row, col].hasValue(of: value) {
                 return false
@@ -116,7 +122,7 @@ extension SodokuSolver {
         return true
     }
     
-    private func isValidValueForCellInCol(value: Int, sodoku: Sodoku, col: Int) -> Bool {
+    private func isValidValueForCellInCol(value: Int, sodoku: Sudoku, col: Int) -> Bool {
         for row in 0..<9 {
             if sodoku[row, col].hasValue(of: value) {
                 return false
@@ -126,7 +132,7 @@ extension SodokuSolver {
         return true
     }
     
-    private func isValidValueForCellInInnerRectangle(value: Int, sodoku: Sodoku, row: Int, col: Int) -> Bool {
+    private func isValidValueForCellInInnerRectangle(value: Int, sodoku: Sudoku, row: Int, col: Int) -> Bool {
         // get rectangle
         let cornerRow = (row / 3) * 3
         let cornerCol = (col / 3) * 3
@@ -145,7 +151,7 @@ extension SodokuSolver {
         return true
     }
     
-    private func nextAvailableCell(from sodoku: Sodoku) -> (row: Int, col: Int)? {
+    private func nextAvailableCell(from sodoku: Sudoku) -> (row: Int, col: Int)? {
         for r in 0..<9 {
             for c in 0..<9 {
                 if case .empty = sodoku[r, c] {
@@ -158,7 +164,7 @@ extension SodokuSolver {
     }
     
     // MARK: Recursive Func
-    private func tryFindSolution(sodoku: Sodoku) -> Sodoku? {
+    private func tryFindSolution(sodoku: Sudoku) -> Sudoku? {
         guard let cell = nextAvailableCell(from: sodoku) else { return sodoku }
         
         for value in 1..<10 {
