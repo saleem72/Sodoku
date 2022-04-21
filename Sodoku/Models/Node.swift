@@ -40,4 +40,20 @@ enum Node: Identifiable {
 }
 
 
+typealias NodeArray = [Node]
+typealias Sodoku = [NodeArray]
 
+extension Array where Element == NodeArray {
+    subscript(row: Int, col: Int) -> Node {
+        get {
+            assert(row>=0 && row<9, "Index out of range")
+            assert(col>=0 && col<9, "Index out of range")
+            return self[row][col]
+        }
+        set {
+            assert(row>=0 && row<9, "Index out of range")
+            assert(col>=0 && col<9, "Index out of range")
+            self[row][col] = newValue
+        }
+    }
+}

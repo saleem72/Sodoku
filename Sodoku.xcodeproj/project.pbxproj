@@ -15,7 +15,6 @@
 		CAA854FE28101219009A954E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854FD28101219009A954E /* Global.swift */; };
 		CAA85501281013A6009A954E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA85500281013A6009A954E /* Color+Extension.swift */; };
 		CAA85504281014D5009A954E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA85503281014D5009A954E /* Node.swift */; };
-		CAA855072810178C009A954E /* Sodoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA855062810178C009A954E /* Sodoku.swift */; };
 		CAA8550B28101A7B009A954E /* SodokuSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550A28101A7B009A954E /* SodokuSolver.swift */; };
 		CAA8550F281021FE009A954E /* SodokuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550E281021FE009A954E /* SodokuProvider.swift */; };
 /* End PBXBuildFile section */
@@ -31,7 +30,6 @@
 		CAA854FD28101219009A954E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		CAA85500281013A6009A954E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		CAA85503281014D5009A954E /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		CAA855062810178C009A954E /* Sodoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sodoku.swift; sourceTree = "<group>"; };
 		CAA8550A28101A7B009A954E /* SodokuSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodokuSolver.swift; sourceTree = "<group>"; };
 		CAA8550E281021FE009A954E /* SodokuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodokuProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				CAA85503281014D5009A954E /* Node.swift */,
-				CAA855062810178C009A954E /* Sodoku.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -219,7 +216,6 @@
 				CAA85501281013A6009A954E /* Color+Extension.swift in Sources */,
 				CAA854E528100ECA009A954E /* ContentView.swift in Sources */,
 				CAA85504281014D5009A954E /* Node.swift in Sources */,
-				CAA855072810178C009A954E /* Sodoku.swift in Sources */,
 				CAA8550F281021FE009A954E /* SodokuProvider.swift in Sources */,
 				CAA8550B28101A7B009A954E /* SodokuSolver.swift in Sources */,
 				CAA854E328100ECA009A954E /* SodokuApp.swift in Sources */,
