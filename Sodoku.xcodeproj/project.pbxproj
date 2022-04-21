@@ -11,6 +11,13 @@
 		CAA854E528100ECA009A954E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854E428100ECA009A954E /* ContentView.swift */; };
 		CAA854E728100ECC009A954E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA854E628100ECC009A954E /* Assets.xcassets */; };
 		CAA854EA28100ECC009A954E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA854E928100ECC009A954E /* Preview Assets.xcassets */; };
+		CAA854F928100F04009A954E /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854F828100F04009A954E /* HomeScreen.swift */; };
+		CAA854FE28101219009A954E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854FD28101219009A954E /* Global.swift */; };
+		CAA85501281013A6009A954E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA85500281013A6009A954E /* Color+Extension.swift */; };
+		CAA85504281014D5009A954E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA85503281014D5009A954E /* Node.swift */; };
+		CAA855072810178C009A954E /* Sodoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA855062810178C009A954E /* Sodoku.swift */; };
+		CAA8550B28101A7B009A954E /* SodokuSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550A28101A7B009A954E /* SodokuSolver.swift */; };
+		CAA8550F281021FE009A954E /* SodokuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550E281021FE009A954E /* SodokuProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +27,13 @@
 		CAA854E628100ECC009A954E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CAA854E928100ECC009A954E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CAA854EB28100ECC009A954E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CAA854F828100F04009A954E /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		CAA854FD28101219009A954E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		CAA85500281013A6009A954E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		CAA85503281014D5009A954E /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		CAA855062810178C009A954E /* Sodoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sodoku.swift; sourceTree = "<group>"; };
+		CAA8550A28101A7B009A954E /* SodokuSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodokuSolver.swift; sourceTree = "<group>"; };
+		CAA8550E281021FE009A954E /* SodokuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodokuProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +66,12 @@
 		CAA854E128100ECA009A954E /* Sodoku */ = {
 			isa = PBXGroup;
 			children = (
-				CAA854E228100ECA009A954E /* SodokuApp.swift */,
-				CAA854E428100ECA009A954E /* ContentView.swift */,
-				CAA854E628100ECC009A954E /* Assets.xcassets */,
+				CAA854F628100EEA009A954E /* Resources */,
+				CAA854F528100EE5009A954E /* Extensions */,
+				CAA8550928101A64009A954E /* Helpers */,
+				CAA854F428100EE0009A954E /* Models */,
+				CAA854F328100EDA009A954E /* Views */,
+				CAA854F228100ED5009A954E /* Screens */,
 				CAA854EB28100ECC009A954E /* Info.plist */,
 				CAA854E828100ECC009A954E /* Preview Content */,
 			);
@@ -67,6 +84,66 @@
 				CAA854E928100ECC009A954E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CAA854F228100ED5009A954E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				CAA854F728100EF7009A954E /* Home */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		CAA854F328100EDA009A954E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CAA854F428100EE0009A954E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CAA85503281014D5009A954E /* Node.swift */,
+				CAA855062810178C009A954E /* Sodoku.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CAA854F528100EE5009A954E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CAA85500281013A6009A954E /* Color+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CAA854F628100EEA009A954E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CAA854E628100ECC009A954E /* Assets.xcassets */,
+				CAA854E428100ECA009A954E /* ContentView.swift */,
+				CAA854E228100ECA009A954E /* SodokuApp.swift */,
+				CAA854FD28101219009A954E /* Global.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		CAA854F728100EF7009A954E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CAA854F828100F04009A954E /* HomeScreen.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CAA8550928101A64009A954E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				CAA8550A28101A7B009A954E /* SodokuSolver.swift */,
+				CAA8550E281021FE009A954E /* SodokuProvider.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +215,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA854FE28101219009A954E /* Global.swift in Sources */,
+				CAA85501281013A6009A954E /* Color+Extension.swift in Sources */,
 				CAA854E528100ECA009A954E /* ContentView.swift in Sources */,
+				CAA85504281014D5009A954E /* Node.swift in Sources */,
+				CAA855072810178C009A954E /* Sodoku.swift in Sources */,
+				CAA8550F281021FE009A954E /* SodokuProvider.swift in Sources */,
+				CAA8550B28101A7B009A954E /* SodokuSolver.swift in Sources */,
 				CAA854E328100ECA009A954E /* SodokuApp.swift in Sources */,
+				CAA854F928100F04009A954E /* HomeScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
