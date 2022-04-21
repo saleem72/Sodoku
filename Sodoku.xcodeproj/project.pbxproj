@@ -20,6 +20,7 @@
 		CA27AD662811779500C9C251 /* DataCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD652811779500C9C251 /* DataCenter.swift */; };
 		CA27AD6928117FD300C9C251 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD6828117FD300C9C251 /* ErrorView.swift */; };
 		CA27AD6C2811821D00C9C251 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD6B2811821D00C9C251 /* BlurView.swift */; };
+		CA27AD702811833900C9C251 /* ChooseLevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD6F2811833900C9C251 /* ChooseLevelScreen.swift */; };
 		CAA854E328100ECA009A954E /* SodokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854E228100ECA009A954E /* SodokuApp.swift */; };
 		CAA854E528100ECA009A954E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854E428100ECA009A954E /* ContentView.swift */; };
 		CAA854E728100ECC009A954E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA854E628100ECC009A954E /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		CA27AD652811779500C9C251 /* DataCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCenter.swift; sourceTree = "<group>"; };
 		CA27AD6828117FD300C9C251 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		CA27AD6B2811821D00C9C251 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		CA27AD6F2811833900C9C251 /* ChooseLevelScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelScreen.swift; sourceTree = "<group>"; };
 		CAA854DF28100ECA009A954E /* Sodoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sodoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA854E228100ECA009A954E /* SodokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodokuApp.swift; sourceTree = "<group>"; };
 		CAA854E428100ECA009A954E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 				CA27AD5E2811747100C9C251 /* ExamplesListScreen.swift */,
 			);
 			path = ExamplesListScreen;
+			sourceTree = "<group>";
+		};
+		CA27AD6E2811832800C9C251 /* ChooseLevelScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CA27AD6F2811833900C9C251 /* ChooseLevelScreen.swift */,
+			);
+			path = ChooseLevelScreen;
 			sourceTree = "<group>";
 		};
 		CAA854D628100ECA009A954E = {
@@ -129,6 +139,7 @@
 		CAA854F228100ED5009A954E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CA27AD6E2811832800C9C251 /* ChooseLevelScreen */,
 				CA27AD5D2811745E00C9C251 /* ExamplesListScreen */,
 				CA27AD49281161DA00C9C251 /* SolvingBuzzelScreen */,
 				CAA854F728100EF7009A954E /* Home */,
@@ -273,6 +284,7 @@
 				CA27AD6928117FD300C9C251 /* ErrorView.swift in Sources */,
 				CA27AD582811740300C9C251 /* ExampleCard.swift in Sources */,
 				CAA854FE28101219009A954E /* Global.swift in Sources */,
+				CA27AD702811833900C9C251 /* ChooseLevelScreen.swift in Sources */,
 				CAA85501281013A6009A954E /* Color+Extension.swift in Sources */,
 				CA27AD52281173C600C9C251 /* LinearGradient+Extension.swift in Sources */,
 				CA27AD4B281161F900C9C251 /* SolvingBuzzelScreen.swift in Sources */,

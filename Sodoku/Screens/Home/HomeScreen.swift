@@ -9,7 +9,7 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
-    
+    @Published var gotoLevels: Bool = false
     init() {
         
     }
@@ -28,6 +28,7 @@ struct HomeScreen: View {
             }
             .navigationTitle("Sudoku")
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(navLinks)
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -36,7 +37,10 @@ struct HomeScreen: View {
 extension HomeScreen {
     private var buttons: some View {
         VStack(spacing: 32) {
-            Button(action: {}, label: {
+            Button(action: {
+                dataCenter.mode = .solving
+                viewModel.gotoLevels = true
+            }, label: {
                 Text("Solve")
                     .font(.title)
                     .fontWeight(.bold)
@@ -48,7 +52,10 @@ extension HomeScreen {
                     )
             })
             
-            Button(action: {}, label: {
+            Button(action: {
+                dataCenter.mode = .playing
+                viewModel.gotoLevels = true
+            }, label: {
                 Text("Play")
                     .font(.title)
                     .fontWeight(.bold)
@@ -69,6 +76,16 @@ extension HomeScreen {
             ErrorView(message: error) {
                 dataCenter.errorMessage = nil
             }
+        }
+    }
+    
+    private var navLinks: some View {
+        VStack {
+            NavigationLink(
+                "",
+                destination: ChooseLevelScreen(),
+                isActive: $viewModel.gotoLevels
+            )
         }
     }
     

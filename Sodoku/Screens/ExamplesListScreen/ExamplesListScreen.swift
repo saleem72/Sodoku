@@ -9,14 +9,16 @@ import SwiftUI
 
 struct ExamplesListScreen: View {
     
-    var examples: [Example]
-    var label: String
+    var level: GameLevel
     
     @EnvironmentObject private var dataCenter: DataCenter
     
-    init(label: String, examples: [Example]) {
-        self.label = label
-        self.examples = examples
+    init(level: GameLevel) {
+        self.level = level
+    }
+    
+    var examples: [Example] {
+        dataCenter.examples.filter({$0.type == level})
     }
     
     var body: some View {
@@ -33,7 +35,7 @@ struct ExamplesListScreen: View {
             }
             .padding()
         }
-        .navigationTitle(label)
+        .navigationTitle(level.title)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -41,7 +43,7 @@ struct ExamplesListScreen: View {
 struct ExamplesListScreen_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ExamplesListScreen(label: "Hard", examples: [Example.example])
+            ExamplesListScreen(level: .hard)
                 .environmentObject(DataCenter())
         }
     }

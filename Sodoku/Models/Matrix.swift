@@ -9,22 +9,26 @@ import Foundation
 
 typealias Matrix = [[Int?]]
 
-enum ExampleType: String, Codable {
+enum GameLevel: String, Codable, CaseIterable, Identifiable {
+    case medium
     case hard
     case expert
     
     var title: String {
         switch self {
+        case .medium: return "Medium"
         case .hard: return "Hard"
         case .expert: return "Expert"
         }
     }
+    
+    var id: String { rawValue }
 }
 
 struct ExampleDTO: Codable {
     var id: Int
     var name: String
-    var type: ExampleType
+    var type: GameLevel
     var matrix: Matrix
 }
 
@@ -34,7 +38,7 @@ class Example: Identifiable {
     
     var id: Int
     var name: String
-    var type: ExampleType
+    var type: GameLevel
     var sudoku: Sudoku
     
     init?(example: ExampleDTO) {

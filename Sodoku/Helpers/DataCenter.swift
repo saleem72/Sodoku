@@ -11,6 +11,7 @@ class DataCenter: ObservableObject {
     @Published var examples: [Example] = []
     @Published var statistics: [Statistic] = []
     @Published var errorMessage: String? = nil
+    @Published var mode: GameMode = .playing
     
     init() {
         loadBuzzels()
@@ -39,5 +40,12 @@ class DataCenter: ObservableObject {
         } else {
             return Statistic(id: example.id, name: example.name)
         }
+    }
+}
+
+extension DataCenter {
+    enum GameMode {
+        case solving
+        case playing
     }
 }
