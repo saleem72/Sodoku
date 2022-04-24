@@ -33,7 +33,7 @@ extension SolvingBuzzelScreen {
     
     private var content: some View {
         VStack(spacing: 32) {
-            GridView(buzzel: buzzel)
+            GridForSolvingView(buzzel: buzzel)
                 .padding(.top, 32)
             
             solveButton()

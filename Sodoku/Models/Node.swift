@@ -37,6 +37,14 @@ enum Node: Identifiable {
         case .variant(value: let value): return value == val
         }
     }
+    
+    var value: Int {
+        switch self {
+        case .empty: return 0
+        case .starter(value: let value): return value
+        case .variant(value: let value): return value
+        }
+    }
 }
 
 
@@ -55,5 +63,18 @@ extension Array where Element == NodeArray {
             assert(col>=0 && col<9, "Index out of range")
             self[row][col] = newValue
         }
+    }
+    
+    var description: String {
+        var result = [String]()
+        for row in 0..<9 {
+            var rowArray = [String]()
+            for col in 0..<9{
+                rowArray.append(String(self[row, col].value))
+            }
+            let temp = rowArray.joined(separator: ", ")
+            result.append("[\(temp)]")
+        }
+        return result.joined(separator: ",\n")
     }
 }

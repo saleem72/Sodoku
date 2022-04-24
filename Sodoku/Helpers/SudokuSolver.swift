@@ -186,6 +186,7 @@ extension SudokuSolver {
         isBusy = true
         if let solution = tryFindSolution(sodoku: initialSodoku) {
             self.initialSodoku = solution
+            print(solution.description)
             isBusy = false
         } else {
             errorMessage = "Can't find solution"

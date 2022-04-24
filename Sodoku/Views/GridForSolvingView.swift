@@ -1,5 +1,5 @@
 //
-//  GridView.swift
+//  GridForSolvingView.swift
 //  Sodoku
 //
 //  Created by Yousef on 4/21/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GridView: View {
+struct GridForSolvingView: View {
     
     @ObservedObject var buzzel: SudokuSolver
     

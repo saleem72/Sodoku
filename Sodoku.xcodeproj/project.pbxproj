@@ -10,7 +10,7 @@
 		CA27AD422811521100C9C251 /* exapmles.json in Resources */ = {isa = PBXBuildFile; fileRef = CA27AD412811521100C9C251 /* exapmles.json */; };
 		CA27AD472811547E00C9C251 /* Matrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD462811547E00C9C251 /* Matrix.swift */; };
 		CA27AD4B281161F900C9C251 /* SolvingBuzzelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD4A281161F900C9C251 /* SolvingBuzzelScreen.swift */; };
-		CA27AD4F281162B400C9C251 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD4E281162B400C9C251 /* GridView.swift */; };
+		CA27AD4F281162B400C9C251 /* GridForSolvingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD4E281162B400C9C251 /* GridForSolvingView.swift */; };
 		CA27AD52281173C600C9C251 /* LinearGradient+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD51281173C600C9C251 /* LinearGradient+Extension.swift */; };
 		CA27AD55281173E500C9C251 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD54281173E500C9C251 /* CheckmarkView.swift */; };
 		CA27AD582811740300C9C251 /* ExampleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD572811740300C9C251 /* ExampleCard.swift */; };
@@ -21,6 +21,9 @@
 		CA27AD6928117FD300C9C251 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD6828117FD300C9C251 /* ErrorView.swift */; };
 		CA27AD6C2811821D00C9C251 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD6B2811821D00C9C251 /* BlurView.swift */; };
 		CA27AD702811833900C9C251 /* ChooseLevelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD6F2811833900C9C251 /* ChooseLevelScreen.swift */; };
+		CA27AD7528118BD900C9C251 /* PlayBuzzelScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD7428118BD900C9C251 /* PlayBuzzelScreen.swift */; };
+		CA27AD7A28118C7300C9C251 /* GridForPlayingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD7928118C7300C9C251 /* GridForPlayingView.swift */; };
+		CA27AD7D28118CBE00C9C251 /* SudokuPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27AD7C28118CBE00C9C251 /* SudokuPlayer.swift */; };
 		CAA854E328100ECA009A954E /* SodokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854E228100ECA009A954E /* SodokuApp.swift */; };
 		CAA854E528100ECA009A954E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA854E428100ECA009A954E /* ContentView.swift */; };
 		CAA854E728100ECC009A954E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA854E628100ECC009A954E /* Assets.xcassets */; };
@@ -31,13 +34,14 @@
 		CAA85504281014D5009A954E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA85503281014D5009A954E /* Node.swift */; };
 		CAA8550B28101A7B009A954E /* SudokuSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550A28101A7B009A954E /* SudokuSolver.swift */; };
 		CAA8550F281021FE009A954E /* SudokuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550E281021FE009A954E /* SudokuProvider.swift */; };
+		CABB9A33281542EF0013574E /* SelectedCellShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABB9A32281542EF0013574E /* SelectedCellShape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA27AD412811521100C9C251 /* exapmles.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = exapmles.json; sourceTree = "<group>"; };
 		CA27AD462811547E00C9C251 /* Matrix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix.swift; sourceTree = "<group>"; };
 		CA27AD4A281161F900C9C251 /* SolvingBuzzelScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvingBuzzelScreen.swift; sourceTree = "<group>"; };
-		CA27AD4E281162B400C9C251 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		CA27AD4E281162B400C9C251 /* GridForSolvingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridForSolvingView.swift; sourceTree = "<group>"; };
 		CA27AD51281173C600C9C251 /* LinearGradient+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LinearGradient+Extension.swift"; sourceTree = "<group>"; };
 		CA27AD54281173E500C9C251 /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		CA27AD572811740300C9C251 /* ExampleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleCard.swift; sourceTree = "<group>"; };
@@ -48,6 +52,9 @@
 		CA27AD6828117FD300C9C251 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		CA27AD6B2811821D00C9C251 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		CA27AD6F2811833900C9C251 /* ChooseLevelScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseLevelScreen.swift; sourceTree = "<group>"; };
+		CA27AD7428118BD900C9C251 /* PlayBuzzelScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayBuzzelScreen.swift; sourceTree = "<group>"; };
+		CA27AD7928118C7300C9C251 /* GridForPlayingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridForPlayingView.swift; sourceTree = "<group>"; };
+		CA27AD7C28118CBE00C9C251 /* SudokuPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuPlayer.swift; sourceTree = "<group>"; };
 		CAA854DF28100ECA009A954E /* Sodoku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sodoku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA854E228100ECA009A954E /* SodokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SodokuApp.swift; sourceTree = "<group>"; };
 		CAA854E428100ECA009A954E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +67,7 @@
 		CAA85503281014D5009A954E /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		CAA8550A28101A7B009A954E /* SudokuSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuSolver.swift; sourceTree = "<group>"; };
 		CAA8550E281021FE009A954E /* SudokuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuProvider.swift; sourceTree = "<group>"; };
+		CABB9A32281542EF0013574E /* SelectedCellShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCellShape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,14 @@
 			path = ChooseLevelScreen;
 			sourceTree = "<group>";
 		};
+		CA27AD7328118BC900C9C251 /* PlayBuzzelScreen */ = {
+			isa = PBXGroup;
+			children = (
+				CA27AD7428118BD900C9C251 /* PlayBuzzelScreen.swift */,
+			);
+			path = PlayBuzzelScreen;
+			sourceTree = "<group>";
+		};
 		CAA854D628100ECA009A954E = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +136,7 @@
 				CAA854F528100EE5009A954E /* Extensions */,
 				CAA8550928101A64009A954E /* Helpers */,
 				CAA854F428100EE0009A954E /* Models */,
+				CABB9A31281542D50013574E /* Shapes */,
 				CAA854F328100EDA009A954E /* Views */,
 				CAA854F228100ED5009A954E /* Screens */,
 				CAA854EB28100ECC009A954E /* Info.plist */,
@@ -139,6 +156,7 @@
 		CAA854F228100ED5009A954E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				CA27AD7328118BC900C9C251 /* PlayBuzzelScreen */,
 				CA27AD6E2811832800C9C251 /* ChooseLevelScreen */,
 				CA27AD5D2811745E00C9C251 /* ExamplesListScreen */,
 				CA27AD49281161DA00C9C251 /* SolvingBuzzelScreen */,
@@ -150,7 +168,8 @@
 		CAA854F328100EDA009A954E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CA27AD4E281162B400C9C251 /* GridView.swift */,
+				CA27AD4E281162B400C9C251 /* GridForSolvingView.swift */,
+				CA27AD7928118C7300C9C251 /* GridForPlayingView.swift */,
 				CA27AD54281173E500C9C251 /* CheckmarkView.swift */,
 				CA27AD572811740300C9C251 /* ExampleCard.swift */,
 				CA27AD5A2811742400C9C251 /* RateView.swift */,
@@ -205,8 +224,17 @@
 				CAA8550A28101A7B009A954E /* SudokuSolver.swift */,
 				CAA8550E281021FE009A954E /* SudokuProvider.swift */,
 				CA27AD652811779500C9C251 /* DataCenter.swift */,
+				CA27AD7C28118CBE00C9C251 /* SudokuPlayer.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CABB9A31281542D50013574E /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				CABB9A32281542EF0013574E /* SelectedCellShape.swift */,
+			);
+			path = Shapes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,13 +312,16 @@
 				CA27AD6928117FD300C9C251 /* ErrorView.swift in Sources */,
 				CA27AD582811740300C9C251 /* ExampleCard.swift in Sources */,
 				CAA854FE28101219009A954E /* Global.swift in Sources */,
+				CABB9A33281542EF0013574E /* SelectedCellShape.swift in Sources */,
 				CA27AD702811833900C9C251 /* ChooseLevelScreen.swift in Sources */,
 				CAA85501281013A6009A954E /* Color+Extension.swift in Sources */,
+				CA27AD7528118BD900C9C251 /* PlayBuzzelScreen.swift in Sources */,
 				CA27AD52281173C600C9C251 /* LinearGradient+Extension.swift in Sources */,
 				CA27AD4B281161F900C9C251 /* SolvingBuzzelScreen.swift in Sources */,
-				CA27AD4F281162B400C9C251 /* GridView.swift in Sources */,
+				CA27AD4F281162B400C9C251 /* GridForSolvingView.swift in Sources */,
 				CA27AD472811547E00C9C251 /* Matrix.swift in Sources */,
 				CAA854E528100ECA009A954E /* ContentView.swift in Sources */,
+				CA27AD7D28118CBE00C9C251 /* SudokuPlayer.swift in Sources */,
 				CAA85504281014D5009A954E /* Node.swift in Sources */,
 				CAA8550F281021FE009A954E /* SudokuProvider.swift in Sources */,
 				CAA8550B28101A7B009A954E /* SudokuSolver.swift in Sources */,
@@ -298,6 +329,7 @@
 				CAA854E328100ECA009A954E /* SodokuApp.swift in Sources */,
 				CA27AD55281173E500C9C251 /* CheckmarkView.swift in Sources */,
 				CA27AD6C2811821D00C9C251 /* BlurView.swift in Sources */,
+				CA27AD7A28118C7300C9C251 /* GridForPlayingView.swift in Sources */,
 				CA27AD5F2811747100C9C251 /* ExamplesListScreen.swift in Sources */,
 				CAA854F928100F04009A954E /* HomeScreen.swift in Sources */,
 			);

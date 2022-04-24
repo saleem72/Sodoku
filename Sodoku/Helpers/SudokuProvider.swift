@@ -20,6 +20,30 @@ class SudokuProvider {
         [nil, nil, 1, 7, nil, nil, nil, 2, nil]
     ]
     
+    static let exampleHard001Solution: [[Int]] = [
+        [1, 5, 4, 6, 7, 2, 8, 9, 3],
+        [7, 3, 6, 5, 9, 8, 1, 4, 2],
+        [2, 8, 9, 1, 3, 4, 6, 5, 7],
+        [3, 1, 2, 4, 5, 6, 7, 8, 9],
+        [4, 6, 7, 3, 8, 9, 2, 1, 5],
+        [5, 9, 8, 2, 1, 7, 4, 3, 6],
+        [6, 2, 3, 8, 4, 5, 9, 7, 1],
+        [8, 7, 5, 9, 2, 1, 3, 6, 4],
+        [9, 4, 1, 7, 6, 3, 5, 2, 8]
+    ]
+    
+    static var sudokuExample: Sudoku = {
+        var sudoku = Array(repeating: Array(repeating: Node.empty, count: 9), count: 9)
+        for row in 0..<9 {
+            for col in 0..<9 {
+                if let value = exampleHard001[row][col] {
+                    sudoku[row, col] = .starter(value: value)
+                }
+            }
+        }
+        return sudoku
+    }()
+    
     static func loadBuzzels() -> Result<[ExampleDTO], SudokuProviderError> {
         guard let url = Bundle.main.url(forResource: "exapmles", withExtension: "json") else {
             print("Error: Can't find exapmles.json")

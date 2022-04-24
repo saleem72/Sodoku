@@ -30,6 +30,7 @@ struct ExampleDTO: Codable {
     var name: String
     var type: GameLevel
     var matrix: Matrix
+    var solution: [[Int]]
 }
 
 class Example: Identifiable {
@@ -40,13 +41,15 @@ class Example: Identifiable {
     var name: String
     var type: GameLevel
     var sudoku: Sudoku
+    var solution: Sudoku
     
     init?(example: ExampleDTO) {
-        guard let temp = Self.prepare(array: example.matrix) else { return nil }
+        guard let sudoku = Self.prepare(array: example.matrix), let solution = Self.prepare(array: example.solution) else { return nil }
         self.id = example.id
         self.name = example.name
         self.type = example.type
-        self.sudoku = temp
+        self.sudoku = sudoku
+        self.solution = solution
     }
     
     static private func hasValidDimintion(array: [[Int?]]) -> Bool {
@@ -73,5 +76,5 @@ class Example: Identifiable {
         return result
     }
     
-    static var example: Example = Example(example: ExampleDTO(id: 1, name: "001", type: .hard, matrix: SudokuProvider.exampleHard001))!
+    static var example: Example = Example(example: ExampleDTO(id: 1, name: "001", type: .hard, matrix: SudokuProvider.exampleHard001, solution: SudokuProvider.exampleHard001Solution))!
 }

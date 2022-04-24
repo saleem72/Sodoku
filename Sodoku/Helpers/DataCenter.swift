@@ -24,7 +24,6 @@ class DataCenter: ObservableObject {
         case .success(let returnedExamples):
             let examples = returnedExamples.compactMap(Example.init)
             self.examples = examples
-            self.examples.forEach({print($0.name)})
         case .failure(let error):
             self.errorMessage = error.localizedDescription
         }

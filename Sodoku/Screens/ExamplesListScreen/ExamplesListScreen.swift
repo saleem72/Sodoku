@@ -24,13 +24,21 @@ struct ExamplesListScreen: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 16) {
+                
                 ForEach(examples) { example in
-                    NavigationLink(
-                        destination: SolvingBuzzelScreen(buzzel: example),
-                        label: {
-                            ExampleCard(example: dataCenter.statistic(for: example))
-                        })
-                    
+                    if dataCenter.mode == .solving {
+                        NavigationLink(
+                            destination: SolvingBuzzelScreen(buzzel: example),
+                            label: {
+                                ExampleCard(example: dataCenter.statistic(for: example))
+                            })
+                    } else {
+                        NavigationLink(
+                            destination: PlayBuzzelScreen(buzzel: example),
+                            label: {
+                                ExampleCard(example: dataCenter.statistic(for: example))
+                            })
+                    }
                 }
             }
             .padding()
