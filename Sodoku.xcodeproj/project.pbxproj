@@ -34,7 +34,18 @@
 		CAA85504281014D5009A954E /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA85503281014D5009A954E /* Node.swift */; };
 		CAA8550B28101A7B009A954E /* SudokuSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550A28101A7B009A954E /* SudokuSolver.swift */; };
 		CAA8550F281021FE009A954E /* SudokuProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8550E281021FE009A954E /* SudokuProvider.swift */; };
+		CAB54E1F2817E50E00193D90 /* CMTime+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E1E2817E50E00193D90 /* CMTime+Extension.swift */; };
+		CAB54E222817E59900193D90 /* CountUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E212817E59900193D90 /* CountUpView.swift */; };
+		CAB54E262818051600193D90 /* TimeSpan.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E252818051600193D90 /* TimeSpan.swift */; };
+		CAB54E29281805B400193D90 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E28281805B400193D90 /* GridCell.swift */; };
+		CAB54E2C281816BE00193D90 /* MistakeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E2B281816BE00193D90 /* MistakeCellView.swift */; };
+		CAB54E2F281816E200193D90 /* MistakeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E2E281816E200193D90 /* MistakeView.swift */; };
+		CAB54E322818171000193D90 /* PlayingKeyBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E312818171000193D90 /* PlayingKeyBoard.swift */; };
+		CAB54E3728181BCE00193D90 /* HighLightedNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E3628181BCE00193D90 /* HighLightedNodeView.swift */; };
+		CAB54E3B28181BED00193D90 /* AnimatedNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E3A28181BED00193D90 /* AnimatedNodeView.swift */; };
+		CAB54E3E28181C5500193D90 /* NodeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB54E3D28181C5500193D90 /* NodeBackgroundView.swift */; };
 		CABB9A33281542EF0013574E /* SelectedCellShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABB9A32281542EF0013574E /* SelectedCellShape.swift */; };
+		CAC457752816D92600A4B1A5 /* KeyBoardKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC457742816D92600A4B1A5 /* KeyBoardKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +78,18 @@
 		CAA85503281014D5009A954E /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		CAA8550A28101A7B009A954E /* SudokuSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuSolver.swift; sourceTree = "<group>"; };
 		CAA8550E281021FE009A954E /* SudokuProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SudokuProvider.swift; sourceTree = "<group>"; };
+		CAB54E1E2817E50E00193D90 /* CMTime+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CMTime+Extension.swift"; sourceTree = "<group>"; };
+		CAB54E212817E59900193D90 /* CountUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountUpView.swift; sourceTree = "<group>"; };
+		CAB54E252818051600193D90 /* TimeSpan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSpan.swift; sourceTree = "<group>"; };
+		CAB54E28281805B400193D90 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
+		CAB54E2B281816BE00193D90 /* MistakeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistakeCellView.swift; sourceTree = "<group>"; };
+		CAB54E2E281816E200193D90 /* MistakeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistakeView.swift; sourceTree = "<group>"; };
+		CAB54E312818171000193D90 /* PlayingKeyBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingKeyBoard.swift; sourceTree = "<group>"; };
+		CAB54E3628181BCE00193D90 /* HighLightedNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighLightedNodeView.swift; sourceTree = "<group>"; };
+		CAB54E3A28181BED00193D90 /* AnimatedNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedNodeView.swift; sourceTree = "<group>"; };
+		CAB54E3D28181C5500193D90 /* NodeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeBackgroundView.swift; sourceTree = "<group>"; };
 		CABB9A32281542EF0013574E /* SelectedCellShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCellShape.swift; sourceTree = "<group>"; };
+		CAC457742816D92600A4B1A5 /* KeyBoardKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBoardKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +190,7 @@
 		CAA854F328100EDA009A954E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CAB54E3528181BBC00193D90 /* GridCellView */,
 				CA27AD4E281162B400C9C251 /* GridForSolvingView.swift */,
 				CA27AD7928118C7300C9C251 /* GridForPlayingView.swift */,
 				CA27AD54281173E500C9C251 /* CheckmarkView.swift */,
@@ -175,6 +198,10 @@
 				CA27AD5A2811742400C9C251 /* RateView.swift */,
 				CA27AD6828117FD300C9C251 /* ErrorView.swift */,
 				CA27AD6B2811821D00C9C251 /* BlurView.swift */,
+				CAB54E312818171000193D90 /* PlayingKeyBoard.swift */,
+				CAB54E212817E59900193D90 /* CountUpView.swift */,
+				CAB54E2B281816BE00193D90 /* MistakeCellView.swift */,
+				CAB54E2E281816E200193D90 /* MistakeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,6 +212,9 @@
 				CAA85503281014D5009A954E /* Node.swift */,
 				CA27AD462811547E00C9C251 /* Matrix.swift */,
 				CA27AD622811759200C9C251 /* Statistic.swift */,
+				CAC457742816D92600A4B1A5 /* KeyBoardKey.swift */,
+				CAB54E252818051600193D90 /* TimeSpan.swift */,
+				CAB54E28281805B400193D90 /* GridCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				CAA85500281013A6009A954E /* Color+Extension.swift */,
+				CAB54E1E2817E50E00193D90 /* CMTime+Extension.swift */,
 				CA27AD51281173C600C9C251 /* LinearGradient+Extension.swift */,
 			);
 			path = Extensions;
@@ -227,6 +258,16 @@
 				CA27AD7C28118CBE00C9C251 /* SudokuPlayer.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		CAB54E3528181BBC00193D90 /* GridCellView */ = {
+			isa = PBXGroup;
+			children = (
+				CAB54E3628181BCE00193D90 /* HighLightedNodeView.swift */,
+				CAB54E3A28181BED00193D90 /* AnimatedNodeView.swift */,
+				CAB54E3D28181C5500193D90 /* NodeBackgroundView.swift */,
+			);
+			path = GridCellView;
 			sourceTree = "<group>";
 		};
 		CABB9A31281542D50013574E /* Shapes */ = {
@@ -307,31 +348,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAB54E2C281816BE00193D90 /* MistakeCellView.swift in Sources */,
 				CA27AD662811779500C9C251 /* DataCenter.swift in Sources */,
+				CAB54E222817E59900193D90 /* CountUpView.swift in Sources */,
 				CA27AD632811759200C9C251 /* Statistic.swift in Sources */,
+				CAB54E3E28181C5500193D90 /* NodeBackgroundView.swift in Sources */,
 				CA27AD6928117FD300C9C251 /* ErrorView.swift in Sources */,
 				CA27AD582811740300C9C251 /* ExampleCard.swift in Sources */,
 				CAA854FE28101219009A954E /* Global.swift in Sources */,
 				CABB9A33281542EF0013574E /* SelectedCellShape.swift in Sources */,
 				CA27AD702811833900C9C251 /* ChooseLevelScreen.swift in Sources */,
 				CAA85501281013A6009A954E /* Color+Extension.swift in Sources */,
+				CAC457752816D92600A4B1A5 /* KeyBoardKey.swift in Sources */,
+				CAB54E262818051600193D90 /* TimeSpan.swift in Sources */,
 				CA27AD7528118BD900C9C251 /* PlayBuzzelScreen.swift in Sources */,
 				CA27AD52281173C600C9C251 /* LinearGradient+Extension.swift in Sources */,
 				CA27AD4B281161F900C9C251 /* SolvingBuzzelScreen.swift in Sources */,
 				CA27AD4F281162B400C9C251 /* GridForSolvingView.swift in Sources */,
+				CAB54E1F2817E50E00193D90 /* CMTime+Extension.swift in Sources */,
 				CA27AD472811547E00C9C251 /* Matrix.swift in Sources */,
 				CAA854E528100ECA009A954E /* ContentView.swift in Sources */,
 				CA27AD7D28118CBE00C9C251 /* SudokuPlayer.swift in Sources */,
 				CAA85504281014D5009A954E /* Node.swift in Sources */,
+				CAB54E2F281816E200193D90 /* MistakeView.swift in Sources */,
 				CAA8550F281021FE009A954E /* SudokuProvider.swift in Sources */,
+				CAB54E3B28181BED00193D90 /* AnimatedNodeView.swift in Sources */,
 				CAA8550B28101A7B009A954E /* SudokuSolver.swift in Sources */,
 				CA27AD5B2811742400C9C251 /* RateView.swift in Sources */,
 				CAA854E328100ECA009A954E /* SodokuApp.swift in Sources */,
 				CA27AD55281173E500C9C251 /* CheckmarkView.swift in Sources */,
 				CA27AD6C2811821D00C9C251 /* BlurView.swift in Sources */,
 				CA27AD7A28118C7300C9C251 /* GridForPlayingView.swift in Sources */,
+				CAB54E322818171000193D90 /* PlayingKeyBoard.swift in Sources */,
+				CAB54E3728181BCE00193D90 /* HighLightedNodeView.swift in Sources */,
 				CA27AD5F2811747100C9C251 /* ExamplesListScreen.swift in Sources */,
 				CAA854F928100F04009A954E /* HomeScreen.swift in Sources */,
+				CAB54E29281805B400193D90 /* GridCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

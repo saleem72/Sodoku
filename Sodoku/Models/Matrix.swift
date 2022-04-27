@@ -65,11 +65,14 @@ class Example: Identifiable {
     
     static private func prepare(array: [[Int?]]) -> Sudoku? {
         guard Self.hasValidDimintion(array: array) else { return nil}
-        var result: Sudoku = Array(repeating: Array(repeating: Node.empty, count: 9), count: 9)
+        var result: Sudoku = Array(repeating: Array(repeating: NodeTemplate(), count: 9), count: 9)
         for row in 0..<9 {
             for col in 0..<9 {
+                result[row, col].row = row
+                result[row, col].col = col
+                
                 if let value = array[row][col] {
-                    result[row, col] = .starter(value: value)
+                    result[row, col].node = .starter(value: value)
                 }
             }
         }

@@ -13,6 +13,8 @@ class DataCenter: ObservableObject {
     @Published var errorMessage: String? = nil
     @Published var mode: GameMode = .playing
     
+    @Published var keyboard: [KeyBoardKey] = KeyBoardKey.keyboard
+    
     init() {
         loadBuzzels()
         loadStatistics()
@@ -39,6 +41,12 @@ class DataCenter: ObservableObject {
         } else {
             return Statistic(id: example.id, name: example.name)
         }
+    }
+    
+    func disableKeyboard(key: Int) {
+        guard let idx = keyboard.firstIndex(where: {$0.value == key}) else { return }
+        keyboard[idx].isActive = false
+        
     }
 }
 

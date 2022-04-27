@@ -12,6 +12,13 @@ struct Global {
     static let screenHeight = UIScreen.main.bounds.height
     
     static let cellWidth = (UIScreen.main.bounds.width - 32) / 9
+    static let keyboardKeyWidth = (UIScreen.main.bounds.width - 32 - 72) / 9
     
-    
+    static func calculateAngle(centerPoint: CGPoint, endPoint: CGPoint) -> CGFloat {
+        let radian = atan2(endPoint.x - centerPoint.x, centerPoint.y - endPoint.y)
+        
+        let degree = 180 + (radian * 180 / .pi)
+        
+        return degree
+    }
 }

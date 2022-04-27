@@ -10,6 +10,10 @@ import SwiftUI
 struct PlayBuzzelScreen: View {
     
     @StateObject private var buzzel: SudokuPlayer
+    @EnvironmentObject var dataCenter: DataCenter
+    @Environment(\.presentationMode) private var presentationMode
+    
+    @State private var isPausing: Bool = false
     
     init(buzzel: Example) {
         self._buzzel = StateObject(wrappedValue: SudokuPlayer(sudoku: buzzel))
@@ -17,33 +21,189 @@ struct PlayBuzzelScreen: View {
     
     var body: some View {
         ZStack {
-            content
-//            if let error = buzzel.errorMessage {
-//                Text(error)
-//                    .font(.system(size: 44, weight: .bold))
-//            }
+            if buzzel.showWinning {
+                winningView
+            } else {
+                content()
+            }
         }
-        .navigationTitle("Sodoku Solver")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarHidden(true)
+        .onAppear {
+            buzzel.dataCenter = dataCenter
+        }
     }
 }
 
 extension PlayBuzzelScreen {
-    private var content: some View {
+    
+    @ViewBuilder
+    private func content() -> some View {
+        if isPausing {
+            pausingView
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .trailing),
+                        removal: .move(edge: .leading)
+                    ))
+                .animation(.default)
+        } else {
+            playingZone
+                .transition(
+                    .asymmetric(
+                        insertion: .move(edge: .leading),
+                        removal: .move(edge: .trailing)
+                    ))
+                .animation(.default)
+        }
+    }
+    
+    private var winningView: some View {
+        ZStack {
+            RadialGradient(
+                gradient: Gradient(colors: [
+                    Color.pallet.pink,
+                    Color(red: 50/255, green: 25/255, blue: 25/255, opacity: 1)
+                ]),
+                center: .center,
+                startRadius: 5,
+                endRadius: 500)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                Text("You have won!\nIn\(buzzel.counterValue)")
+                    .font(.largeTitle)
+                    .foregroundColor(.primary)
+                
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Ok")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 8)
+                        .frame(width: 150)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.white, lineWidth: 2)
+                        )
+                })
+            }
+        }
+    }
+    
+    private var pausingView: some View {
+        ZStack {
+            RadialGradient(
+                gradient: Gradient(colors: [
+                    Color.pallet.pink,
+                    Color(red: 50/255, green: 25/255, blue: 25/255, opacity: 1)
+                ]),
+                center: .center,
+                startRadius: 5,
+                endRadius: 500)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 32) {
+                Button(action: {
+                    isPausing = false
+                }, label: {
+                    Text("Resume")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 8)
+                        .frame(width: 150)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.white, lineWidth: 2)
+                        )
+                })
+                
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {
+                    Text("Menu")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 8)
+                        .frame(width: 150)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.white, lineWidth: 2)
+                        )
+                })
+            }
+        }
+    }
+    
+    private var errorOverlay: some View {
+        MistakeView(count: buzzel.errorCount)
+    }
+    
+    private var playingZone: some View {
         VStack(spacing: 32) {
-            GridForPlayingView(buzzel: buzzel)
-                .padding(.top, 32)
-                .zIndex(1.0)
+            
+            VStack {
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text("Level \(buzzel.example.name)")
+                        Text(buzzel.example.type.title)
+                    }
+                    
+                    Spacer(minLength: 0)
+                    VStack {
+                        Text("Time")
+                        Text(buzzel.counterValue)
+                    }
+                    .frame(width: 100)
+                }
+                .padding(.horizontal)
+                .overlay(errorOverlay)
+                
+                GridForPlayingView(buzzel: buzzel)
+                    .zIndex(1.0)
+            }
             
             PlayingKeyBoard { key in
                 buzzel.keyWasTapped(key)
                     
             }
             
+            HStack(spacing: 8) {
+                Button(action: {
+                    isPausing = true
+                }, label: {
+                    Image(systemName: "pause.fill")
+                        .frame(width: Global.keyboardKeyWidth, height: Global.keyboardKeyWidth)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke()
+                        )
+                })
+                
+                Button(action: {}, label: {
+                    Image(systemName: "arrow.counterclockwise")
+                        .frame(width: Global.keyboardKeyWidth, height: Global.keyboardKeyWidth)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke()
+                        )
+                })
+                
+                Spacer(minLength: 0)
+            }
+            .padding(.horizontal)
+            
             Spacer(minLength: 0)
         }
+        .padding(.top, 32)
         .onAppear {
-            print(buzzel.solution.description)
+            buzzel.counter.resume()
+        }
+        .onDisappear() {
+            buzzel.counter.pause()
         }
     }
 }
@@ -53,82 +213,39 @@ struct PlayBuzzelScreen_Previews: PreviewProvider {
         NavigationView {
             PlayBuzzelScreen(buzzel: Example.example)
         }
+        .environmentObject(DataCenter())
     }
 }
 
 
-struct PlayingKeyBoard: View {
-    
-    var onTab: (Int) -> Void
-    
-    init(onTab: @escaping (Int) -> Void) {
-        self.onTab = onTab
-    }
-    
-    var body: some View {
-        HStack(spacing: 8) {
-            let itemWidth = (Global.screenWidth - 32 - 72) / 9
-            ForEach(1...9, id:\.self) { idx in
-                Button(action: {
-                    onTab(idx)
-                }, label: {
-                    Text("\(idx)")
-                        .frame(width: itemWidth, height: itemWidth)
-                        .background(
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(Color(.systemBackground))
-                                RoundedRectangle(cornerRadius: 4)
-                                    .stroke()
-                            }
-                        )
-                })
-            }
-        }
-        .frame(maxWidth: .infinity)
-    }
-}
+
 
 
 struct GridCellView: View {
     
-    var node: Node
+    @Binding var node: NodeTemplate
     var position: GridCell
     @ObservedObject var buzzel: SudokuPlayer
     
-    @State private var isAnimated: Bool = false
     @State private var likes: Double = 100
     
-    init(node: Node, position: GridCell, buzzel: SudokuPlayer) {
-        self.node = node
+    init(node: Binding<NodeTemplate>, position: GridCell, buzzel: SudokuPlayer) {
+        self._node = node
         self.position = position
         self.buzzel = buzzel
     }
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(Color(.systemBackground))
-            Rectangle()
-                .stroke(
-                    Color.pallet.pink.opacity(0.6),
-                    lineWidth: 1
-                )
+            NodeBackgroundView()
             
             
             if position == buzzel.activeCell {
                 SelectedCellShape()
             }
             
-            if node.value == buzzel.highLightedValue {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(.systemBlue))
-                    Text(node.text)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                }
+            if node.isHighLighted && !node.isSparke {
+                HighLightedNodeView(node: node)
             } else {
                 if buzzel.ignoredCell != position {
                     Text(node.text)
@@ -138,48 +255,12 @@ struct GridCellView: View {
                 }
             }
             
-            if position == buzzel.animatedCell {
-                
-                    
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(.systemBlue))
-                    
-                    if buzzel.animatedCellError {
-                        ZStack {
-                            Text("\(buzzel.animatedCellErrorValue)")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            
-                            Image(systemName: "xmark")
-                                .font(.largeTitle)
-                                .foregroundColor(.red)
-                        }
-                    } else {
-                        Text(node.text)
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                    }
-                }
-                .rotation3DEffect(
-                    Angle(degrees: isAnimated ? 0 : 45),
-                    axis: (x: 0.0, y: 1.0, z: 1.0)
-                    )
-                .scaleEffect(isAnimated ? 1 : 0.5)
-                .offset(x: isAnimated ? 0 : Global.cellWidth * 0.5, y: isAnimated ? 0 : Global.cellWidth)
-                .onAppear {
-                    isAnimated = false
-                    withAnimation(Animation.easeIn(duration: 0.3)) {
-                        isAnimated = true
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        buzzel.normalGrid()
-                    }
-                }
-                .zIndex(2)
+            if node.isAnimated {
+                AnimatedNodeView(node: $node, buzzel: buzzel)
+            }
+            
+            if node.isSparke {
+                NodeSparklingView(node: $node, buzzel: buzzel)
             }
         }
         .frame(width: Global.cellWidth, height: Global.cellWidth)
@@ -189,29 +270,61 @@ struct GridCellView: View {
     }
 }
 
-struct LikeEffect: GeometryEffect {
 
-    var offsetValue: Double // 0...1
-    
-    var animatableData: Double {
-        get { offsetValue }
-        set { offsetValue = newValue }
-    }
-    
-    func effectValue(size: CGSize) -> ProjectionTransform {
-        let reducedValue = offsetValue - floor(offsetValue)
-        let value = 1.0-(cos(2*reducedValue*Double.pi)+1)/2
 
-        let angle  = CGFloat(Double.pi*value*0.3)
-        let translation   = CGFloat(20*value)
-        let scaleFactor  = CGFloat(1+1*value)
-        
-        
-        let affineTransform = CGAffineTransform(translationX: size.width*0.5, y: size.height*0.5)
-        .rotated(by: CGFloat(angle))
-        .translatedBy(x: -size.width*0.5+translation, y: -size.height*0.5-translation)
-        .scaledBy(x: scaleFactor, y: scaleFactor)
-        
-        return ProjectionTransform(affineTransform)
+
+
+
+
+struct NodeSparklingView: View {
+    
+    @Binding var node: NodeTemplate
+    @ObservedObject var buzzel: SudokuPlayer
+    
+    @State private var sparklingDegree: Double = 0
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(Color(.systemBackground))
+            RoundedRectangle(cornerRadius: 8)
+                .stroke()
+            Text(node.text)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.green)
+        }
+        .compositingGroup()
+        .rotation3DEffect(
+            Angle(degrees: sparklingDegree),
+            axis: (x: 0.0, y: 0.0, z: 1.0)
+        )
+        .onAppear {
+            withAnimation(Animation.easeIn(duration: 0.3)) {
+                sparklingDegree = 45
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                withAnimation(Animation.easeIn(duration: 0.3)) {
+                    sparklingDegree = -45
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                withAnimation(Animation.easeIn(duration: 0.3)) {
+                    sparklingDegree = 0
+                }
+            }
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                node.isSparke = false
+                
+//                buzzel.checkForEndGame()
+            }
+        }
     }
 }
+
+
+
+
+
+

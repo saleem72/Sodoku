@@ -35,7 +35,7 @@ extension SudokuSolver {
         return row >= 0 && row < 9 && column >= 0 && column < 9
     }
     
-    subscript(row: Int, column: Int) -> Node {
+    subscript(row: Int, column: Int) -> NodeTemplate {
         get {
             assert(indexIsValid(row: row, column: column), "Index out of range")
             return initialSodoku[row, column]
@@ -58,7 +58,7 @@ extension SudokuSolver {
     func isSodokuValid() -> Bool {
         for row in 0..<9 {
             for col in 0..<9 {
-                if case .empty = initialSodoku[row, col]  {
+                if case .empty = initialSodoku[row, col].node  {
                 
                 } else {
                     return true
@@ -81,11 +81,13 @@ extension SudokuSolver {
     
     static private func prepare(array: [[Int?]]) -> Sudoku? {
         guard Self.hasValidDimintion(array: array) else { return nil}
-        var result: Sudoku = Array(repeating: Array(repeating: Node.empty, count: 9), count: 9)
+        var result: Sudoku = Array(repeating: Array(repeating: NodeTemplate(), count: 9), count: 9)
         for row in 0..<9 {
             for col in 0..<9 {
+                result[row, col].row = row
+                result[row, col].col = col
                 if let value = array[row][col] {
-                    result[row, col] = .starter(value: value)
+                    result[row, col].node = .starter(value: value)
                 }
             }
         }
@@ -154,7 +156,7 @@ extension SudokuSolver {
     private func nextAvailableCell(from sodoku: Sudoku) -> (row: Int, col: Int)? {
         for r in 0..<9 {
             for c in 0..<9 {
-                if case .empty = sodoku[r, c] {
+                if case .empty = sodoku[r, c].node {
                     return (r, c)
                 }
             }
@@ -171,7 +173,7 @@ extension SudokuSolver {
             let temp = isValidValueForCell(value: value, sodoku: sodoku, row: cell.row, col: cell.col)
             if temp {
                 var nextSodoku = sodoku
-                nextSodoku[cell.row, cell.col] = .variant(value: value)
+                nextSodoku[cell.row, cell.col].node = .variant(value: value)
                 if let success = tryFindSolution(sodoku: nextSodoku) {
                     return success
                 }

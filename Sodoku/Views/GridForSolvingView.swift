@@ -23,10 +23,10 @@ struct GridForSolvingView: View {
                                 Rectangle()
                                     .stroke(Color.pallet.pink.opacity(0.6))
                                 let node = buzzel[row, col]
-                                Text(node.text)
+                                Text(node.node.text)
                                     .font(.subheadline)
                                     .fontWeight(.bold)
-                                    .foregroundColor(node.color)
+                                    .foregroundColor(node.node.color)
                             }
                             .frame(width: Global.cellWidth, height: Global.cellWidth)
                         }

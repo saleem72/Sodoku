@@ -33,11 +33,13 @@ class SudokuProvider {
     ]
     
     static var sudokuExample: Sudoku = {
-        var sudoku = Array(repeating: Array(repeating: Node.empty, count: 9), count: 9)
+        var sudoku = Array(repeating: Array(repeating: NodeTemplate(), count: 9), count: 9)
         for row in 0..<9 {
             for col in 0..<9 {
+                sudoku[row, col].row = row
+                sudoku[row, col].col = col
                 if let value = exampleHard001[row][col] {
-                    sudoku[row, col] = .starter(value: value)
+                    sudoku[row, col].node = .starter(value: value)
                 }
             }
         }

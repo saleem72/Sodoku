@@ -21,8 +21,7 @@ struct GridForPlayingView: View {
                     HStack(spacing: 0) {
                         ForEach(0..<9, id:\.self) { col in
                             let cell = GridCell(row: row, col: col)
-                            let node = buzzel[row, col]
-                            GridCellView(node: node, position: cell, buzzel: buzzel)
+                            GridCellView(node: $buzzel[row, col], position: cell, buzzel: buzzel)
                                 .zIndex(1 - 0.1 * Double(col))
                             
                         }
